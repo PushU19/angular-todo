@@ -1,0 +1,8 @@
+.wrapper {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.toolbar-row {
+    justify-content: space-between;
+}

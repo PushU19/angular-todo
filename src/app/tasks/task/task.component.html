@@ -1,0 +1,29 @@
+<mat-card class="card">
+    <mat-card-title-group class="card-title">
+        <mat-card-title>{{ task.username }}</mat-card-title>
+        <mat-card-subtitle>{{ task.email }}</mat-card-subtitle>
+        <div>
+            <span>{{ task.status | taskStatusPipe }}</span>
+        </div>
+    </mat-card-title-group>
+
+    <mat-card-content>
+        <p>
+            {{ task.text }}
+        </p>
+    </mat-card-content>
+
+    <mat-card-actions *ngIf="isAuth$ | async" class="card-actions">
+        <div>
+            <button (click)="editTask(task.id)" class="card-action" mat-icon-button>
+                <mat-icon
+                        aria-hidden="false"
+                        aria-label="Edit task"
+                        class="card-action-icon"
+                >edit
+                </mat-icon
+                >
+            </button>
+        </div>
+    </mat-card-actions>
+</mat-card>

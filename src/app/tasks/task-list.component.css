@@ -1,0 +1,34 @@
+.sort-toolbar {
+    font-size: 14px;
+}
+
+.sort-toolbar-title {
+    margin-right: 15px;
+}
+
+.add_button {
+    margin-left: 20px;
+}
+
+.mat-icon {
+    width: 26px;
+    height: 26px;
+}
+
+.add-toolbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sort-selects {
+    flex-grow: 0.4;
+}
+
+.add-toolbar .mat-select {
+    font-size: 13px;
+}
+
+.loading-spinner {
+    margin: 0 auto;
+    margin-top: 50%;
+}

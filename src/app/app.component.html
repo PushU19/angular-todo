@@ -1,0 +1,22 @@
+<div class="wrapper">
+    <mat-toolbar class="toolbar" color="primary">
+        <mat-toolbar-row class="toolbar-row">
+            <a routerLink="/">
+                <span>ToDo list</span>
+            </a>
+            <div *ngIf="isAuth$ | async; else noAuth">
+                <button (click)="onLogOut()" mat-icon-button>
+                    <mat-icon>logout</mat-icon>
+                </button>
+            </div>
+            <ng-template #noAuth>
+                <a routerLink="/auth">
+                    <button mat-icon-button>
+                        <mat-icon aria-label="Авторизация">login</mat-icon>
+                    </button>
+                </a>
+            </ng-template>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+</div>

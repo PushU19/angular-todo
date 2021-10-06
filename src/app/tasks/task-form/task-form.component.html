@@ -1,0 +1,67 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="taskForm">
+  <mat-form-field appearance="fill" class="full-width" class="full-width">
+    <mat-label>Автор</mat-label>
+    <input
+      formControlName="taskUser"
+      matInput
+      type="text"
+      [formControl]="usernameControl"
+      required
+    />
+    <mat-error *ngIf="usernameControl.hasError('required')">
+      Поле обязательно для заполения
+    </mat-error>
+    <mat-error *ngIf="usernameError$ | async">
+      {{ usernameError$ | async }}
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="full-width" class="full-width">
+    <mat-label>Email</mat-label>
+    <input
+      formControlName="taskEmail"
+      matInput
+      type="text"
+      [formControl]="emailControl"
+      required
+      email
+    />
+    <mat-error *ngIf="emailControl.hasError('required')">
+      Поле обязательно для заполения
+    </mat-error>
+    <mat-error *ngIf="emailControl.hasError('email')">
+      Невальдный email
+    </mat-error>
+    <mat-error *ngIf="emailError$ | async">
+      {{ emailError$ | async }}
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="full-width" class="full-width">
+    <mat-label>Текст</mat-label>
+    <textarea
+      formControlName="taskText"
+      matInput
+      [formControl]="textControl"
+      required
+    ></textarea>
+    <mat-error *ngIf="textControl.hasError('required')">
+      Поле обязательно для заполения
+    </mat-error>
+    <mat-error *ngIf="textError$ | async">
+      {{ textError$ | async }}
+    </mat-error>
+  </mat-form-field>
+  <mat-checkbox
+    *ngIf="!isCreateMode"
+    [checked]="isTaskReady"
+    class="checkbox"
+    formControlName="taskStatus"
+  >
+    Задача выполнена
+  </mat-checkbox>
+  <div class="button-group">
+    <button color="primary" mat-raised-button type="submit">Сохранить</button>
+    <button (click)="onCancel()" color="basic" mat-raised-button type="reset">
+      Отменить
+    </button>
+  </div>
+</form>

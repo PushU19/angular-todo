@@ -1,0 +1,14 @@
+<mat-toolbar>
+    <mat-toolbar-row>
+        <span *ngIf="isCreateMode; else editMode">Create task</span>
+        <ng-template #editMode>Edit task</ng-template>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-card class="card-editing">
+    <app-task-form
+            (onCancelForm)="onCancelForm()"
+            (onSubmitForm)="onSubmitForm($event)"
+            [isCreateMode]="isCreateMode"
+            [task]="task$ | async"
+    ></app-task-form>
+</mat-card>

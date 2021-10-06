@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+a {
+  color: inherit !important;
+  text-decoration: none;
+  line-height: normal;
+}
+
+.success-snackbar {
+  background: rgb(44, 228, 44);
+  color: #000;
+}
+.warn-snackbar {
+  background: #ffd230;
+  color: #000;
+}
+.mat-simple-snackbar-action {
+  color: #000;
+}
+.error-snackbar {
+  background: #ff5245;
+  color: #000;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,43 @@
+.card {
+    margin: 10px;
+    position: relative;
+}
+
+.card-title {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.mat-card,
+.mat-card-subtitle {
+    border: none;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.button-group {
+    display: flex;
+}
+
+.button-group > button {
+    margin: 5px;
+}
+
+textarea {
+    min-height: 70px;
+}
+
+.card-actions {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.card-action-icon {
+    color: #303030;
+    font-size: 15px;
+}

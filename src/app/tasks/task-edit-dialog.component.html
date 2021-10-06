@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Редактирование</h1>
+<div mat-dialog-content>
+    <app-task-form (onCancelForm)="onCancelForm()"
+                   (onSubmitForm)="onSubmitForm($event)"
+                   [isCreateMode]="false"
+                   [task]="data.task"
+    ></app-task-form>
+</div>

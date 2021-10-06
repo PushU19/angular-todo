@@ -1,0 +1,63 @@
+<mat-toolbar class="add-toolbar">
+    <div class="sort-selects">
+        <div *ngIf="hasTasks$ | async">
+            <mat-select
+                    (selectionChange)="setField($event)"
+                    [value]="selectedSortField$ | async"
+            >
+                <mat-select-trigger>
+                    {{ selectedSortField$ | async | taskSortPipe }}
+                </mat-select-trigger>
+                <mat-option
+                        *ngFor="let sortType of sortFieldTypes"
+                        [value]="sortType.value"
+                >
+                    {{ sortType.label }}
+                </mat-option>
+            </mat-select>
+            <mat-select
+                    (selectionChange)="setDirect($event)"
+                    [value]="selectedSortDirection$ | async"
+            >
+                <mat-select-trigger>
+                    {{ selectedSortDirection$ | async | taskDirectPipe }}
+                </mat-select-trigger>
+                <mat-option
+                        *ngFor="let directType of sortDirectionTypes"
+                        [value]="directType.value"
+                >
+                    {{ directType.label }}
+                </mat-option>
+            </mat-select>
+        </div>
+    </div>
+    <a class="add_button" routerLink="/tasks/add">
+        <button color="primary" mat-mini-fab>
+            <mat-icon>add</mat-icon>
+        </button>
+    </a>
+</mat-toolbar>
+<div *ngIf="tasksIsLoading$ | async; else list">
+    <mat-progress-spinner
+            class="loading-spinner"
+            mode="indeterminate"
+    ></mat-progress-spinner>
+</div>
+<ng-template #noTasks>
+    <h4>Задания отсутствуют</h4>
+</ng-template>
+<ng-template #list>
+    <div *ngIf="hasTasks$ | async; else noTasks" class="task-list">
+        <mat-paginator
+                (page)="setPage($event)"
+                [length]="total_task_count$ | async"
+                [pageIndex]="selectedPage$ | async"
+                [pageSizeOptions]="pageSizeOptions"
+                [pageSize]="pageSize"
+                aria-label="Select page"
+                hidePageSize
+        >
+        </mat-paginator>
+        <app-task *ngFor="let task of tasks$ | async" [task]="task"></app-task>
+    </div>
+</ng-template>
